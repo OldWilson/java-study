@@ -1,5 +1,7 @@
 package thread.state;
 
+import java.text.MessageFormat;
+
 public class ThreadStateDemo_Wait {
     public static void main(String[] args) throws InterruptedException {
         Object obj = new Object();
@@ -20,18 +22,18 @@ public class ThreadStateDemo_Wait {
         t1.start();
         Thread.sleep(1000L);
         synchronized(obj) {
-            System.out.println("t1的状态：" + t1.getState());
-            obj.notify();
+            System.out.println(MessageFormat.format("t1的状态：{0}", t1.getState()));
+            obj.notifyAll();
             Thread.sleep(1000L);
-            System.out.println("t1的状态：" + t1.getState());
+            System.out.println(MessageFormat.format("t1的状态：{0}", t1.getState()));
         }
 
         Thread.sleep(3000L);
-        System.out.println("t1的状态：" + t1.getState());
+        System.out.println(MessageFormat.format("t1的状态：{0}", t1.getState()));
 
         Thread.sleep(1000L);
         synchronized(obj) {
-            obj.notify();
+            obj.notifyAll();
         }
         System.out.println("t1的状态：" + t1.getState());
         Thread.sleep(1000L);
