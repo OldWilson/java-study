@@ -28,16 +28,16 @@ public class Event<T> {
         }
     }
 
-    static class Transforms {
-        static EventData transform(Integer id) {
-            return switch (id) {
-                case 0 -> new EventData(id, "start");
-                case 1 -> new EventData(id, "running");
-                case 2 -> new EventData(id, "done");
-                default -> new EventData(id, "Error");
-            };
-        }
-    }
+//    static class Transforms {
+//        static EventData transform(Integer id) {
+//            return switch (id) {
+//                case 0 -> new EventData(id, "start");
+//                case 1 -> new EventData(id, "running");
+//                case 2 -> new EventData(id, "done");
+//                default -> new EventData(id, "Error");
+//            };
+//        }
+//    }
 
     @FunctionalInterface
     interface FN<A,B> {
@@ -48,14 +48,14 @@ public class Event<T> {
         return new Event<>(f.apply(this.data));
     }
 
-    public static void main(String[] args) {
-        Stream<Event<Integer>> s = Stream.of(
-                new Event<>(1),
-                new Event<>(2),
-                new Event<>(0),
-                new Event<>(10)
-        );
-        s.map(event -> event.map(Transforms::transform))
-                .forEach(e -> System.out.println(e.data));
-    }
+//    public static void main(String[] args) {
+//        Stream<Event<Integer>> s = Stream.of(
+//                new Event<>(1),
+//                new Event<>(2),
+//                new Event<>(0),
+//                new Event<>(10)
+//        );
+//        s.map(event -> event.map(Transforms::transform))
+//                .forEach(e -> System.out.println(e.data));
+//    }
 }
